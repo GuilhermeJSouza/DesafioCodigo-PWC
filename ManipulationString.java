@@ -58,7 +58,6 @@ public class ManipulationString {
         String fraseRevertida = "";
 
         // LOCALIZAÇÃO DOS ESPAÇOS
-
         separadores.set(0, frase.indexOf(" ")); // adiciona na posição zero a posição do primeiro retorno de espaço
 
         for (int x = frase.indexOf(" ") + 1; x < frase.length(); x++) // Iteração para encontrar todos os espaços da
@@ -68,18 +67,18 @@ public class ManipulationString {
                 separadores.add(frase.indexOf(" ", x));
             }
         }
-        System.out.println(separadores); // teste
-
+    
         // PALAVRAS QUE COMPÕEM A FRASE
-        palavras.set(0, frase.substring(separadores.get(0), separadores.get(0) + 1));
+        palavras.set(0, frase.substring(0, separadores.get(0)));
 
-        for (int y = 0; y < separadores.size(); y++) {
-            palavras.add(frase.substring(separadores.get(y) + 1, separadores.get(y + 1) - 1));
+        for (int y = 1; y < separadores.size(); y++) {
+            palavras.add(frase.substring(separadores.get(y - 1) + 1, separadores.get(y)));
         }
-        System.out.println(palavras); // teste
 
-        for (int z = palavras.size(); z >= 0; z--) {
-            fraseRevertida += palavras.get(z) + " ";
+        palavras.add(frase.substring(separadores.get(separadores.size() - 1) + 1, frase.length()));
+
+        for (int z = palavras.size(); z > 0; z--) {
+            fraseRevertida += palavras.get(z - 1) + " ";
         }
 
         return fraseRevertida;
