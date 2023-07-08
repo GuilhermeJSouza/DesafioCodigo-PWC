@@ -172,8 +172,15 @@ public class ManipulationString {
     // ####################################################################################################################//#endregion
 
     public static String Palindromo(String frase3) {
-        String frasePalindromo = "";
+        
         boolean palindromo = false;
+
+        frase3.trim(); //Tirar os espaços da frase
+
+        ArrayList<String> substrings = new ArrayList<String>();
+
+        String frasePalindromo = ""; // Declaração e inicialização da string de saida
+
 
         for (int x = 0; x < frase3.length(); x++) {
             System.out.println("X-" + frase3.charAt(x));
@@ -188,18 +195,10 @@ public class ManipulationString {
                     break;
                 } else {
                     frasePalindromo += "-";
-                    // palindromo = false;
-                    // break;
 
                 }
             }
-            /*
-             * if (frasePalindromo.length() == frase3.length() / 2) {
-             * frasePalindromo +=
-             * //palindromo = true;
-             * break;
-             * }
-             */
+
         }
 
         return frasePalindromo;
