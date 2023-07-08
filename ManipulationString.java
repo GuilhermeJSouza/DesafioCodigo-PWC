@@ -79,17 +79,19 @@ public class ManipulationString {
 
                     break;
 
-                case 5:
-
-                    System.out.println("Digite a frase para colocar maiúsculas.");
-
-                    String frase5 = input.nextLine();
-
-                    String fraseNova5 = Anagrama(frase5);
-
-                    System.out.println(fraseNova5);
-
-                    break;
+                /*
+                 * case 5:
+                 * 
+                 * System.out.println("Digite a frase para colocar maiúsculas.");
+                 * 
+                 * String frase5 = input.nextLine();
+                 * 
+                 * String fraseNova5 = Anagrama(frase5);
+                 * 
+                 * System.out.println(fraseNova5);
+                 * 
+                 * break;
+                 */
             }
         }
 
@@ -214,15 +216,15 @@ public class ManipulationString {
             letras.add(frase4.substring(x, x + 1));
         }
 
-        letras.get(0).toUpperCase();
+        letras.set(0, letras.get(0).toUpperCase());
 
-        System.out.println(letras.get(0)); // teste
+        // System.out.println(letras.get(0)); // teste
 
         for (int y = 0; y < letras.size(); y++) {
-            System.out.println(letras.get(y));// teste
+            // System.out.println(letras.get(y));// teste
 
-            if (letras.get(y).equals("")) {
-                letras.get(y + 1).toUpperCase();
+            if (letras.get(y).equals(" ")) {
+                letras.set(y + 1, letras.get(y + 1).toUpperCase());
             }
         }
 
