@@ -66,6 +66,30 @@ public class ManipulationString {
                     System.out.println(fraseNova3);
 
                     break;
+
+                case 4:
+
+                    System.out.println("Digite a frase para colocar maiúsculas.");
+
+                    String frase4 = input.nextLine();
+
+                    String fraseNova4 = Maiuscula(frase4);
+
+                    System.out.println(fraseNova4);
+
+                    break;
+
+                case 5:
+
+                    System.out.println("Digite a frase para colocar maiúsculas.");
+
+                    String frase5 = input.nextLine();
+
+                    String fraseNova5 = Anagrama(frase5);
+
+                    System.out.println(fraseNova5);
+
+                    break;
             }
         }
 
@@ -143,7 +167,7 @@ public class ManipulationString {
         return fraseSemDuplicata;
     }
 
-    // ##############################################################################################################################
+    // ##########################################################################################################//#endregion
 
     public static String Palindromo(String frase3) {
         String frasePalindromo = "";
@@ -157,6 +181,7 @@ public class ManipulationString {
 
                 if (frase3.charAt(x) == frase3.charAt(y)) {
                     frasePalindromo += frase3.charAt(x);
+                    y -= y;
                     System.out.println(frasePalindromo);
                     break;
                 } else {
@@ -176,5 +201,37 @@ public class ManipulationString {
         }
 
         return frasePalindromo;
+    }
+
+    // #######################################################################################################################//#endregion
+    public static String Maiuscula(String frase4) {
+        Scanner input = new Scanner(System.in);
+
+        ArrayList<String> letras = new ArrayList<String>();
+
+        for (int x = 0; x < frase4.length(); x++) // Coloca cada letra da frase no ArrayList
+        {
+            letras.add(frase4.substring(x, x + 1));
+        }
+
+        letras.get(0).toUpperCase();
+
+        System.out.println(letras.get(0)); // teste
+
+        for (int y = 0; y < letras.size(); y++) {
+            System.out.println(letras.get(y));// teste
+
+            if (letras.get(y).equals("")) {
+                letras.get(y + 1).toUpperCase();
+            }
+        }
+
+        String fraseMaiuscula = ""; // Declara e inicializa a a string do return
+
+        for (String letra : letras) {
+            fraseMaiuscula += letra; // Concatena as letras para formar string novamente
+        }
+
+        return fraseMaiuscula;
     }
 }
