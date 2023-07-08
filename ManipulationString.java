@@ -54,10 +54,24 @@ public class ManipulationString {
                     System.out.println(fraseNova2);
 
                     break;
+
+                case 3:
+
+                    System.out.println("Digite a frase para encontrar o palíndromo");
+
+                    String frase3 = input.nextLine();
+
+                    String fraseNova3 = Palindromo(frase3);
+
+                    System.out.println(fraseNova3);
+
+                    break;
             }
         }
 
     }
+
+    // ########################################################################################################################
 
     // Comando Reverter a String
     public static String reverta(String frase) {
@@ -98,19 +112,19 @@ public class ManipulationString {
         return fraseRevertida;
     }
 
+    // ########################################################################################################################
+
     public static String RemoveDuplicata(String frase2) {
         ArrayList<String> letras = new ArrayList<String>(); // Cria um arraylist para as letras da frase
 
-        for (int w = 0; w < frase2.length(); w++) // Coloca cada letra da frase no vetor
+        for (int w = 0; w < frase2.length(); w++) // Coloca cada letra da frase no ArrayList
         {
             letras.add(frase2.substring(w, w + 1));
         }
 
-        for (int x = 0; x < letras.size() - 1; x++) {
-            // System.out.printf("%n X %s", letras.get(x)); // teste
+        for (int x = 0; x < letras.size() - 1; x++) { // Faz varredura no ArrayList comparando os elementos
 
             for (int y = x + 1; y < letras.size(); y++) {
-                // System.out.printf(" Y %s", letras.get(y)); // teste
 
                 if (letras.get(y).equals(letras.get(x))) {
                     if (!letras.get(y).equals(" ")) {
@@ -118,17 +132,48 @@ public class ManipulationString {
                     }
                 }
             }
-
         }
 
-        // System.out.println(letras); // teste
-
-        String fraseSemDuplicata = "";
+        String fraseSemDuplicata = ""; // Declara e inicializa a a string do return
 
         for (String letra : letras) {
-            fraseSemDuplicata += letra;
+            fraseSemDuplicata += letra; // Concatena as letras para formar string novamente
         }
 
         return fraseSemDuplicata;
+    }
+
+    // ##############################################################################################################################
+
+    public static String Palindromo(String frase3) {
+        String frasePalindromo = "";
+        boolean palindromo = false;
+
+        for (int x = 0; x < frase3.length(); x++) {
+            System.out.println("X-" + frase3.charAt(x));
+
+            for (int y = frase3.length() - 1 - x; y > -1; y--) {
+                System.out.println("Y-" + frase3.charAt(y));
+
+                if (frase3.charAt(x) != frase3.charAt(frase3.length() - 1 - x)) {
+                    frasePalindromo = "";
+                    // palindromo = false;
+                    // break;
+                } else {
+                    frasePalindromo += frase3.charAt(x);
+                    System.out.println(frasePalindromo);
+                    break;
+                }
+            }
+            /*
+             * if (frasePalindromo.length() == frase3.length() / 2) {
+             * frasePalindromo +=
+             * //palindromo = true;
+             * break;
+             * }
+             */
+        }
+
+        return frasePalindromo;
     }
 }
