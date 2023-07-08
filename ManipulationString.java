@@ -97,7 +97,7 @@ public class ManipulationString {
 
     }
 
-    // ########################################################################################################################
+    // #####################################################################################################################//#endregion
 
     // Comando Reverter a String
     public static String reverta(String frase) {
@@ -138,7 +138,7 @@ public class ManipulationString {
         return fraseRevertida;
     }
 
-    // ########################################################################################################################
+    // #################################################################################################################//#endregion
 
     public static String RemoveDuplicata(String frase2) {
         ArrayList<String> letras = new ArrayList<String>(); // Cria um arraylist para as letras da frase
@@ -169,7 +169,7 @@ public class ManipulationString {
         return fraseSemDuplicata;
     }
 
-    // ##########################################################################################################//#endregion
+    // ####################################################################################################################//#endregion
 
     public static String Palindromo(String frase3) {
         String frasePalindromo = "";
@@ -205,26 +205,27 @@ public class ManipulationString {
         return frasePalindromo;
     }
 
-    // #######################################################################################################################//#endregion
-    public static String Maiuscula(String frase4) {
-        Scanner input = new Scanner(System.in);
+    // ####################################################################################################################//#endregion
 
-        ArrayList<String> letras = new ArrayList<String>();
+    public static String Maiuscula(String frase4) {
+        Scanner input = new Scanner(System.in); // Declaração do objeto Scanner
+
+        ArrayList<String> letras = new ArrayList<String>(); // Array com as letras da frase ou palavra
 
         for (int x = 0; x < frase4.length(); x++) // Coloca cada letra da frase no ArrayList
         {
             letras.add(frase4.substring(x, x + 1));
         }
 
-        letras.set(0, letras.get(0).toUpperCase());
+        letras.set(0, letras.get(0).toUpperCase()); // Coloca Maiúscula na primeira letra
 
-        // System.out.println(letras.get(0)); // teste
+        for (int y = 0; y < letras.size(); y++) { // Varredura para encontrar sinais de final de frase
 
-        for (int y = 0; y < letras.size(); y++) {
-            // System.out.println(letras.get(y));// teste
-
-            if (letras.get(y).equals(" ")) {
-                letras.set(y + 1, letras.get(y + 1).toUpperCase());
+            if (letras.get(y).equals(".") || letras.get(y).equals("!")) {
+                if (y != letras.size() - 1) // condição de não ser o último da frase
+                {
+                    letras.set(y + 2, letras.get(y + 2).toUpperCase()); // substituição por maiúscula
+                }
             }
         }
 
@@ -236,4 +237,6 @@ public class ManipulationString {
 
         return fraseMaiuscula;
     }
+    // ########################################################################################//#endregion
+
 }
