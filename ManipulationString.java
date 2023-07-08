@@ -181,7 +181,8 @@ public class ManipulationString {
 
         String frasePalindromo = ""; // Declaração e inicialização da string de saida
 
-        if (frase3.length() > 2) { // Divisão das strings em partes de três letras
+        if (frase3.length() > 2) // Divisão das strings em partes de três letras
+        {
             for (int x = 0; x < frase3.length(); x++) {
                 try {
                     substrings.add(frase3.substring(x, x + 3));
@@ -190,6 +191,33 @@ public class ManipulationString {
                 }
             }
         }
+        System.out.println(substrings); // Teste
+
+        // for (String sub : substrings) {
+        for (int y = 0; y < substrings.size(); y++) // Varredura pelas substrings
+        {
+            palindromo = true;
+            int inicio = 0;
+            int fim = substrings.get(y).length() - 1;
+
+            while (inicio < fim) {
+                if (substrings.get(y).charAt(inicio) != substrings.get(y).charAt(fim)) {
+                    palindromo = false;
+                    break;
+                }
+                inicio++;
+                fim--;
+            }
+
+            if (palindromo) {
+                System.out.println("É um palíndromo."); // teste
+            } else {
+                substrings.remove(y);
+                System.out.println("Não é um palíndromo."); // teste
+            }
+        }
+
+        System.out.println(substrings);
 
         return frasePalindromo;
     }
