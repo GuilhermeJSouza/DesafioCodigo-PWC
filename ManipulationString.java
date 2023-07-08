@@ -152,17 +152,18 @@ public class ManipulationString {
         for (int x = 0; x < frase3.length(); x++) {
             System.out.println("X-" + frase3.charAt(x));
 
-            for (int y = frase3.length() - 1 - x; y > -1; y--) {
+            for (int y = frase3.length() - 1 - x; y > x - 1; y--) {
                 System.out.println("Y-" + frase3.charAt(y));
 
-                if (frase3.charAt(x) != frase3.charAt(frase3.length() - 1 - x)) {
-                    frasePalindromo = "";
-                    // palindromo = false;
-                    // break;
-                } else {
+                if (frase3.charAt(x) == frase3.charAt(y)) {
                     frasePalindromo += frase3.charAt(x);
                     System.out.println(frasePalindromo);
                     break;
+                } else {
+                    frasePalindromo += "-";
+                    // palindromo = false;
+                    // break;
+
                 }
             }
             /*
