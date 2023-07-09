@@ -61,9 +61,9 @@ public class ManipulationString {
 
                     String frase3 = input.nextLine();
 
-                    String fraseNova3 = Palindromo(frase3);
+                    // String fraseNova3 = Palindromo(frase3);
 
-                    System.out.println(fraseNova3);
+                    System.out.println(Palindromo(frase3));
 
                     break;
 
@@ -171,29 +171,28 @@ public class ManipulationString {
 
     // ####################################################################################################################//#endregion
 
-    public static String Palindromo(String frase3) {
+    public static ArrayList<String> Palindromo(String frase3) {
 
         boolean palindromo = false;
 
-        frase3.trim(); // Tirar os espaços da frase
+        frase3 = frase3.trim(); // Tirar os espaços da frase
 
         ArrayList<String> substrings = new ArrayList<String>();
 
-        String frasePalindromo = ""; // Declaração e inicialização da string de saida
+        // String frasePalindromo = ""; // Declaração e inicialização da string de saida
 
         if (frase3.length() > 2) // Divisão das strings em partes de três letras
         {
             for (int x = 0; x < frase3.length(); x++) {
-                try {
-                    substrings.add(frase3.substring(x, x + 3));
-                } catch (Exception e) {
-                    break;
-                }
+                for (int z = 3; z < frase3.length() + 1; z++)
+                    try {
+                        substrings.add(frase3.substring(x, x + z));
+                    } catch (Exception e) {
+                        break;
+                    }
             }
         }
-        System.out.println(substrings); // Teste
 
-        // for (String sub : substrings) {
         for (int y = 0; y < substrings.size(); y++) // Varredura pelas substrings
         {
             palindromo = true;
@@ -209,17 +208,26 @@ public class ManipulationString {
                 fim--;
             }
 
-            if (palindromo) {
-                System.out.println("É um palíndromo."); // teste
-            } else {
-                substrings.remove(y);
-                System.out.println("Não é um palíndromo."); // teste
+            if (!palindromo) {
+                substrings.set(y, "-");
             }
         }
 
-        System.out.println(substrings);
+        for (int w = substrings.size() - 1; w >= 0; w--) {
+            if (substrings.get(w).equals("-")) {
+                substrings.remove(w);
+            }
+        }
+        /*
+         * for (String sub : substrings)
+         * {
+         * frasePalindromo += sub;
+         * }
+         */
 
-        return frasePalindromo;
+        return substrings;
+
+        // return frasePalindromo;
     }
 
     // ####################################################################################################################//#endregion
