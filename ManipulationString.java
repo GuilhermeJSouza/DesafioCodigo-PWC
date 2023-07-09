@@ -8,92 +8,121 @@
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class ManipulationString {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in); // Inicia o objeto Scanner.
+        boolean enquanto = true;
 
-        System.out.println("""
+        while (enquanto) {
+            System.out.println("""
 
-                Digite o número correspondente à operação a ser realizada e pressione a tecla Enter do teclado:
+                    Digite o número correspondente à operação a ser realizada e pressione a tecla Enter do teclado:
 
-                1  Reverter ordem
-                2  Remover duplicata
-                3  Encontre Palíndromo
-                4  Iniciais maiúsculas
-                5  Anagrama"""); // Apresenta ao usuário as opções de comando
+                    1  Reverter ordem
+                    2  Remover duplicata
+                    3  Encontre Palíndromo
+                    4  Iniciais maiúsculas
+                    5  Anagrama"""); // Apresenta ao usuário as opções de comando
 
-        int comando = input.nextInt(); // recebe a entrada do usuário em relação ao comando selecionado
-        String limpa = input.nextLine(); // limpa a entrada de dados para aguardar a String
+            int comando = input.nextInt(); // recebe a entrada do usuário em relação ao comando selecionado
+            String limpa = input.nextLine(); // limpa a entrada de dados para aguardar a String
 
-        if (comando >= 1 && comando <= 5) // Analisa qual a operação selecionada pelo comando do usuário
-        {
-            switch (comando) // Escolhe a execução de acordo com o comando do usuário
+            if (comando >= 1 && comando <= 5) // Analisa qual a operação selecionada pelo comando do usuário
             {
-                case 1: // Comando reverter ordem
+                switch (comando) // Escolhe a execução de acordo com o comando do usuário
+                {
+                    case 1: // Comando reverter ordem
 
-                    System.out.println("Digite a frase a ser revertida."); // Comunica ao usuário o próximo comando
+                        System.out.println("Digite a frase a ser revertida."); // Comunica ao usuário o próximo comando
 
-                    String frase = input.nextLine(); // Lê a entrada do usuário
+                        String frase = input.nextLine(); // Lê a entrada do usuário
 
-                    String fraseNova = reverta(frase); // Executa o comando especificado
+                        String fraseNova = reverta(frase); // Executa o comando especificado
 
-                    System.out.println(fraseNova);
+                        System.out.println(fraseNova);
 
-                    break;
+                        // TimeUnit.MILLISECONDS.sleep(2000);
 
-                case 2: // Comando remover duplicata
+                        break;
 
-                    System.out.println("Digite a frase para remover caracteres duplicados."); // Comunica ao usuário o
-                                                                                              // próximo comando
+                    case 2: // Comando remover duplicata
 
-                    String frase2 = input.nextLine(); // Lê a entrada do usuário
+                        System.out.println("Digite a frase para remover caracteres duplicados."); // Comunica ao usuário
+                                                                                                  // o
+                                                                                                  // próximo comando
 
-                    String fraseNova2 = RemoveDuplicata(frase2); // Executa o comando especificado
+                        String frase2 = input.nextLine(); // Lê a entrada do usuário
 
-                    System.out.println(fraseNova2);
+                        String fraseNova2 = RemoveDuplicata(frase2); // Executa o comando especificado
 
-                    break;
+                        System.out.println(fraseNova2);
 
-                case 3:
+                        // TimeUnit.MILLISECONDS.sleep(2000);
 
-                    System.out.println("Digite a frase para encontrar o palíndromo.");
+                        break;
 
-                    String frase3 = input.nextLine();
+                    case 3:
 
-                    // String fraseNova3 = Palindromo(frase3);
+                        System.out.println("Digite a frase para encontrar o palíndromo.");
 
-                    System.out.println(Palindromo(frase3));
+                        String frase3 = input.nextLine();
 
-                    break;
+                        // String fraseNova3 = Palindromo(frase3);
 
-                case 4:
+                        System.out.println(Palindromo(frase3));
 
-                    System.out.println("Digite a frase para colocar maiúsculas.");
+                        // TimeUnit.MILLISECONDS.sleep(2000);
 
-                    String frase4 = input.nextLine();
+                        break;
 
-                    String fraseNova4 = Maiuscula(frase4);
+                    case 4:
 
-                    System.out.println(fraseNova4);
+                        System.out.println("Digite a frase para colocar maiúsculas.");
 
-                    break;
+                        String frase4 = input.nextLine();
 
-                case 5:
+                        String fraseNova4 = Maiuscula(frase4);
 
-                    System.out.println("Digite a frase para analisar palíndromo.");
+                        System.out.println(fraseNova4);
 
-                    String frase5 = input.nextLine();
+                        // TimeUnit.MILLISECONDS.sleep(2000);
 
-                    // String fraseNova5 = Anagrama(frase5);
+                        break;
 
-                    System.out.println(Anagrama(frase5));
+                    case 5:
 
-                    break;
+                        System.out.println("Digite a frase para analisar palíndromo.");
 
+                        String frase5 = input.nextLine();
+
+                        // String fraseNova5 = Anagrama(frase5);
+
+                        System.out.println(Anagrama(frase5));
+
+                        // TimeUnit.MILLISECONDS.sleep(2000);
+
+                        break;
+
+                    default:
+
+                        System.out.println("Comando não encontrado, execute novamente o programa.");
+
+                        break;
+                }
+            }
+            System.out.println("Deseja fazer uma nova operação? Digite \"S\" para sim ou \"N\" para não.");
+
+            String continuar = input.nextLine().toUpperCase();
+
+            if (!continuar.equals("S")) {
+                System.out.print("Obrigado, volte sempre!");
+                enquanto = false;
+            } else {
+                continue;
             }
         }
-
     }
 
     // #####################################################################################################################//#endregion
