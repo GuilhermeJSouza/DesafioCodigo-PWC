@@ -15,7 +15,7 @@ public class ManipulationString {
 
         System.out.println("""
 
-                Digite o número correspondente à operação a ser realizada:
+                Digite o número correspondente à operação a ser realizada e pressione a tecla Enter do teclado:
 
                 1  Reverter ordem
                 2  Remover duplicata
@@ -57,7 +57,7 @@ public class ManipulationString {
 
                 case 3:
 
-                    System.out.println("Digite a frase para encontrar o palíndromo");
+                    System.out.println("Digite a frase para encontrar o palíndromo.");
 
                     String frase3 = input.nextLine();
 
@@ -79,19 +79,18 @@ public class ManipulationString {
 
                     break;
 
-                /*
-                 * case 5:
-                 * 
-                 * System.out.println("Digite a frase para colocar maiúsculas.");
-                 * 
-                 * String frase5 = input.nextLine();
-                 * 
-                 * String fraseNova5 = Anagrama(frase5);
-                 * 
-                 * System.out.println(fraseNova5);
-                 * 
-                 * break;
-                 */
+                case 5:
+
+                    System.out.println("Digite a frase para analisar palíndromo.");
+
+                    String frase5 = input.nextLine();
+
+                    // String fraseNova5 = Anagrama(frase5);
+
+                    System.out.println(Anagrama(frase5));
+
+                    break;
+
             }
         }
 
@@ -196,24 +195,24 @@ public class ManipulationString {
         for (int y = 0; y < substrings.size(); y++) // Varredura pelas substrings
         {
             palindromo = true;
-            int inicio = 0;
-            int fim = substrings.get(y).length() - 1;
+            int inicio = 0; // Variável de controle do loop while
+            int fim = substrings.get(y).length() - 1; // Variável de controle do loop while
 
-            while (inicio < fim) {
+            while (inicio < fim) { // loop para comparação das letras
                 if (substrings.get(y).charAt(inicio) != substrings.get(y).charAt(fim)) {
                     palindromo = false;
                     break;
                 }
-                inicio++;
-                fim--;
+                inicio++; // incremento
+                fim--; // decremento
             }
 
             if (!palindromo) {
-                substrings.set(y, "-");
+                substrings.set(y, "-"); // substituição das substrings que não são palindromo por um traço
             }
         }
 
-        for (int w = substrings.size() - 1; w >= 0; w--) {
+        for (int w = substrings.size() - 1; w >= 0; w--) { // remoção das substrings não palindromas
             if (substrings.get(w).equals("-")) {
                 substrings.remove(w);
             }
@@ -225,7 +224,7 @@ public class ManipulationString {
          * }
          */
 
-        return substrings;
+        return substrings; // retorno do método
 
         // return frasePalindromo;
     }
@@ -264,4 +263,24 @@ public class ManipulationString {
     }
     // ########################################################################################//#endregion
 
+    public static String Anagrama(String frase5) {
+        String texto = frase5.replaceAll("[^a-zA-Z]", "").toLowerCase(); // Remover espaços e pontuação da entrada
+
+        boolean palindromo = true;
+        int inicio = 0;
+        int fim = texto.length() - 1;
+
+        while (inicio < fim) {
+            if (texto.charAt(inicio) != texto.charAt(fim)) {
+                palindromo = false;
+                break;
+            }
+            inicio++;
+            fim--;
+        }
+
+        String anagrama = String.valueOf(palindromo); // Converter booleana em String
+
+        return anagrama;
+    }
 }
